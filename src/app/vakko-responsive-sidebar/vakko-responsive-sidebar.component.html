@@ -1,0 +1,635 @@
+<div [ngClass]="{'sidenav': true, 'open': isOpen}">
+
+  <!-- Sidebar woman -->
+  <div class="dropdown-menu" *ngIf="activeDropdown === 'women' && womenSidebarData">
+    <div class="nav-wrapper js-nav-wrapper">
+      <div class="nav-wrapper-node js-wrapper-node">
+        <div class="navigation__wrapper__inner js-inner-level2">
+          <div class="nav-wrapper-node__top">
+            <!-- Ana kategoriler -->
+            <div class="nav-wrapper-node__top__left">
+              <ul class="level2 js-level2" *ngFor="let category of womenSidebarData.mainCategories">
+                <li>
+                  <div *ngIf="category.subCategories.length > 0" hovercolor="" class="navigation-node-wrapper no-link">
+                    <span class="title-span">{{ category.title }}</span>
+                  </div>
+
+                  <div class="wrapper js-wrapper-level2" *ngIf="category.subCategories.length > 0">
+                    <ul class="level3 js-level3">
+                      <li *ngFor="let subCategory of category.subCategories">
+                        <a class="navigation-node-wrapper" [href]="subCategory.link">
+                          <span class="sub-span">{{ subCategory.name }}</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <!-- Lookbook ve Sağ Menü -->
+            <div class="nav-wrapper-node__top__right">
+              <ul class="level2 js-level2" *ngFor="let lookbook of womenSidebarData.lookbooks ">
+                <li>
+                  <a class="navigation-node-wrapper" [href]="lookbook.link">
+                    <span class="right-span" [ngStyle]="lookbook.style || {}">{{ lookbook.name }} </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- Özel Teklifler -->
+          <div class="nav-wrapper-node__bottom">
+            <ul class="level2 js-level2" *ngFor="let offer of womenSidebarData.specialOffers">
+              <li>
+                <a class="navigation-node-wrapper" [href]="offer.link">
+                  <span class="right-span" [ngStyle]="offer">
+                    {{ offer.name }}
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- Görsel -->
+      <div class="nav-wrapper__image" *ngIf="womenSidebarData.sidebarImage">
+        <a [href]="womenSidebarData.sidebarImage.link">
+          <img class="drop-img" [src]="womenSidebarData.sidebarImage.src" [alt]="womenSidebarData.sidebarImage.alt">
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sidebar Erkek -->
+  <div class="dropdown-menu" *ngIf="activeDropdown === 'men' && menSidebarData">
+    <div class="nav-wrapper js-nav-wrapper">
+      <div class="nav-wrapper-node js-wrapper-node">
+        <div class="navigation__wrapper__inner js-inner-level2">
+          <div class="nav-wrapper-node__top">
+            <!-- Ana kategoriler -->
+            <div class="nav-wrapper-node__top__left">
+              <ul class="level2 js-level2" *ngFor="let category of menSidebarData.mainCategories">
+                <li>
+                  <div *ngIf="category.subCategories.length > 0" hovercolor="" class="navigation-node-wrapper no-link">
+                    <span class="title-span">{{ category.title }}</span>
+                  </div>
+
+                  <div class="wrapper js-wrapper-level2" *ngIf="category.subCategories.length > 0">
+                    <ul class="level3 js-level3">
+                      <li *ngFor="let subCategory of category.subCategories">
+                        <a class="navigation-node-wrapper" [href]="subCategory.link">
+                          <span class="sub-span">{{ subCategory.name }}</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <!-- Lookbook ve Sağ Menü -->
+            <div class="nav-wrapper-node__top__right">
+              <ul class="level2 js-level2" *ngFor="let lookbook of menSidebarData.lookbooks">
+                <li>
+                  <a class="navigation-node-wrapper" [href]="lookbook.link">
+                    <span class="right-span" [ngStyle]="lookbook.style || {}">{{ lookbook.name }}</span>
+                  </a>
+                </li>
+              </ul>
+
+            </div>
+          </div>
+          <!-- Özel Teklifler -->
+          <div class="nav-wrapper-node__bottom">
+            <ul class="level2 js-level2" *ngFor="let offer of menSidebarData.specialOffers">
+              <li>
+                <a class="navigation-node-wrapper" [href]="offer.link">
+                  <span class="right-span">
+                    {{ offer.name }}
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- Yan Görsel -->
+      <div class="nav-wrapper__image" *ngIf="menSidebarData.sidebarImage">
+        <a [href]="menSidebarData.sidebarImage.link">
+          <img class="drop-img" [src]="menSidebarData.sidebarImage.src" [alt]="menSidebarData.sidebarImage.alt">
+        </a>
+      </div>
+    </div>
+  </div>
+  <!-- Sidebar Shoes&Bags -->
+  <div class="dropdown-menu" *ngIf="activeDropdown === 'shoesBags' && bagsSidebarData">
+    <div class="nav-wrapper js-nav-wrapper">
+      <div class="nav-wrapper-node js-wrapper-node">
+        <div class="navigation__wrapper__inner js-inner-level2">
+          <div class="nav-wrapper-node__top">
+            <!-- Ana kategoriler -->
+            <div class="nav-wrapper-node__top__left">
+              <ul class="level2 js-level2" *ngFor="let category of bagsSidebarData.shoesBags.categories">
+                <li>
+                  <div *ngIf="category.subCategories.length > 0" hovercolor="" class="navigation-node-wrapper no-link">
+                    <span class="title-span">{{ category.title }}</span>
+                  </div>
+
+                  <div class="wrapper js-wrapper-level2" *ngIf="category.subCategories.length > 0">
+                    <ul class="level3 js-level3">
+                      <li *ngFor="let subCategory of category.subCategories">
+                        <a class="navigation-node-wrapper" [href]="subCategory.link">
+                          <span class="sub-span">{{ subCategory.name }}</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <!-- Lookbook ve Sağ Menü -->
+            <div class="nav-wrapper-node__top__right">
+              <ul class="level2 js-level2" *ngFor="let bagsman of bagsSidebarData.shoesBags.lookbooks">
+                <li>
+                  <div class="navigation-node-wrapper no-link">
+                    <span class="title-span">{{ bagsman.title }}</span>
+                  </div>
+                  <div class="wrapper js-wrapper-level2">
+                    <ul class="level3 js-level3">
+                      <li *ngFor="let subCategory of bagsman.subCategories">
+                        <a class="navigation-node-wrapper" [href]="subCategory.link">
+                          <span class="sub-span" [ngStyle]="subCategory.style || {}">{{ subCategory.name }}</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Özel Teklifler -->
+          <div class="nav-wrapper-node__bottom">
+            <ul class="level2 js-level2" *ngFor="let offer of bagsSidebarData.shoesBags.specialOffers">
+              <li>
+                <a class="navigation-node-wrapper" [href]="offer.link">
+                  <span class="right-span">
+                    {{ offer.name }}
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+      <!-- Yan Görsel -->
+      <div class="nav-wrapper__image" *ngIf="bagsSidebarData.shoesBags.sideImage">
+        <a [href]="bagsSidebarData.shoesBags.sideImage.link">
+          <img class="drop-img" [src]="bagsSidebarData.shoesBags.sideImage.src"
+            [alt]="bagsSidebarData.shoesBags.sideImage.alt">
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sidebar V2k DESIGNERS -->
+  <div class="dropdown-menu" *ngIf="activeDropdown === 'designer' && v2kSidebarData">
+    <div class="nav-wrapper js-nav-wrapper">
+      <div class="nav-wrapper-node js-wrapper-node">
+        <div class="navigation__wrapper__inner js-inner-level2">
+          <div class="nav-wrapper-node__top">
+            <!-- Ana kategoriler -->
+            <div class="nav-wrapper-node__top__left">
+              <ul class="level2 js-level2" *ngFor="let category of v2kSidebarData.designer.leftCategories">
+                <li>
+                  <div class="navigation-node-wrapper no-link">
+                    <span class="title-span">{{ category.title }}</span>
+                  </div>
+
+                  <div class="wrapper js-wrapper-level2">
+                    <ul class="level3 js-level3">
+                      <li *ngFor="let subCategory of category.subcategories">
+                        <a class="navigation-node-wrapper" [href]="subCategory.link">
+                          <span class="sub-span">{{ subCategory.name }}</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <!-- Lookbook ve Sağ Menü -->
+            <div class="nav-wrapper-node__top__right">
+              <ul class="level2 js-level2" *ngFor="let lookbook of v2kSidebarData.designer.rightCategories">
+                <li>
+                  <a class="navigation-node-wrapper" [href]="lookbook.link">
+                    <span class="right-span" [ngStyle]="lookbook.style || {}">{{ lookbook.name }}</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!-- Yan Görsel -->
+      <div class="nav-wrapper__image" *ngIf=" v2kSidebarData.designer.sideImage">
+        <a [href]="v2kSidebarData.designer.sideImage.link">
+          <img class="drop-img" [src]="v2kSidebarData.designer.sideImage.src"
+            [alt]="v2kSidebarData.designer.sideImage.alt">
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sidebar Couture -->
+  <div class="dropdown-menu" *ngIf="activeDropdown === 'couture' && coutureSidebarData">
+    <div class="nav-wrapper js-nav-wrapper">
+      <div class="nav-wrapper-node js-wrapper-node">
+        <div class="navigation__wrapper__inner js-inner-level2">
+          <div class="nav-wrapper-node__top">
+            <!-- Ana kategoriler -->
+            <div class="nav-wrapper-node__top__left">
+              <ul *ngFor="let category of coutureSidebarData.couture.leftCategories" class="level2 js-level2">
+                <li>
+                  <a class="navigation-node-wrapper" [href]="category.link">
+                    <span class="title-span">{{ category.title }}</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="nav-wrapper-node__top__right">
+              <ul *ngFor="let rightCategory of coutureSidebarData.couture.rightCategories" class="level2 js-level2">
+                <li>
+                  <a class="navigation-node-wrapper" [href]="rightCategory.link">
+                    <span class="right-span" [ngStyle]="rightCategory.style">
+                      {{ rightCategory.name }}
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="nav-wrapper-node__bottom" *ngIf="coutureSidebarData.couture.bottomCategories">
+            <ul class="level2 js-level2">
+              <li *ngFor="let bottomCategory of coutureSidebarData.couture.bottomCategories">
+                <a class="navigation-node-wrapper" [href]="bottomCategory.link">
+                  <span class="right-span">{{ bottomCategory.name }}</span>
+                </a>
+                <div class="wrapper js-wrapper-level2"></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="nav-wrapper__image" *ngIf="coutureSidebarData.couture.sideImage">
+        <a [href]="coutureSidebarData.couture.sideImage.link">
+          <img class="drop-img" [src]="coutureSidebarData.couture.sideImage.src"
+            [alt]="coutureSidebarData.couture.sideImage.alt">
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sidebar Wedding -->
+  <div class="dropdown-menu-onlyImg" *ngIf="activeDropdown === 'wedding'">
+    <div class="nav-wrapper__image">
+      <a href="#">
+        <img class="drop-img" src="assets/vakko-responsive-sidebar-svg/sidebarimg06.jpeg" alt="wedding">
+      </a>
+    </div>
+  </div>
+
+  <!-- Sidebar Home -->
+  <div class="dropdown-menu" *ngIf="activeDropdown === 'home' && homeSidebarData">
+    <div class="nav-wrapper js-nav-wrapper">
+      <div class="nav-wrapper-node js-wrapper-node">
+        <div class="navigation__wrapper__inner js-inner-level2">
+          <div class="nav-wrapper-node__top">
+            <!-- Ana kategoriler -->
+            <div class="nav-wrapper-node__top__left">
+              <ul *ngFor="let category of homeSidebarData.home.leftCategories" class="level2 js-level2">
+                <li>
+                  <div *ngIf="!category.link" class="navigation-node-wrapper no-link">
+                    <span class="title-span">{{ category.title }}</span>
+                  </div>
+                  <a *ngIf="category.link" class="navigation-node-wrapper" [href]="category.link"
+                    [ngStyle]="category.style">
+                    <span class="title-span">{{ category.title }}</span>
+                  </a>
+
+                  <div *ngIf="category.subcategories" class="wrapper js-wrapper-level2">
+                    <ul class="level3 js-level3">
+                      <li *ngFor="let subcategory of category.subcategories">
+                        <a class="navigation-node-wrapper" [href]="subcategory.link">
+                          <span class="sub-span">{{ subcategory.name }}</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="nav-wrapper-node__top__right">
+              <ul *ngFor="let rightCategory of homeSidebarData.home.rightCategories" class="level2 js-level2">
+                <li>
+                  <a class="navigation-node-wrapper" [href]="rightCategory.link">
+                    <span class="title-span">{{ rightCategory.title }}</span>
+                  </a>
+
+                  <div *ngIf="rightCategory.subcategories" class="wrapper js-wrapper-level2">
+                    <ul class="level3 js-level3">
+                      <li *ngFor="let subcategory of rightCategory.subcategories">
+                        <a class="navigation-node-wrapper" [href]="subcategory.link">
+                          <span class="sub-span">{{ subcategory.name }}</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- Özel Teklifler -->
+          <div class="nav-wrapper-node__bottom" *ngIf="homeSidebarData.home.bottomCategories">
+            <ul class="level2 js-level2">
+              <li *ngFor="let bottomCategory of homeSidebarData.home.bottomCategories">
+                <a class="navigation-node-wrapper" [href]="bottomCategory.link">
+                  <span class="right-span">{{ bottomCategory.name }}</span>
+                </a>
+                <div class="wrapper js-wrapper-level2"></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="nav-wrapper__image" *ngIf="homeSidebarData.home.sideImage">
+        <a [href]="homeSidebarData.home.sideImage.link">
+          <img class="drop-img" [src]="homeSidebarData.home.sideImage.src" [alt]="homeSidebarData.home.sideImage.alt">
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sidebar Kozmetik -->
+  <div class="dropdown-menu" *ngIf="activeDropdown === 'kozmetik' && cosmeticSidebarData">
+    <div class="nav-wrapper js-nav-wrapper">
+      <div class="nav-wrapper-node js-wrapper-node">
+        <div class="navigation__wrapper__inner js-inner-level2">
+          <div class="nav-wrapper-node__top">
+            <!-- Ana kategoriler -->
+            <div class="nav-wrapper-node__top__left">
+              <ul class="level2 js-level2" *ngFor="let category of cosmeticSidebarData.kozmetik.leftCategories">
+                <li>
+                  <div *ngIf="category.subcategories.length > 0 " hovercolor="" class="navigation-node-wrapper no-link">
+                    <span class="title-span">{{ category.title }}</span>
+                  </div>
+
+                  <div class="wrapper js-wrapper-level2" *ngIf="category.subcategories.length > 0">
+                    <ul class="level3 js-level3">
+                      <li *ngFor="let subCategory of category.subcategories">
+                        <a class="navigation-node-wrapper" [href]="subCategory.link">
+                          <span class="sub-span">{{ subCategory.name }}</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <!-- Lookbook ve Sağ Menü -->
+            <div class="nav-wrapper-node__top__right">
+              <ul class="level2 js-level2" *ngFor="let category of cosmeticSidebarData.kozmetik.rightCategories">
+                <li>
+                  <a class="navigation-node-wrapper" [href]="category.link">
+                    <span class="right-span">{{ category.title }}</span>
+                  </a>
+
+                  <div *ngIf="category.subcategories" class="wrapper js-wrapper-level2">
+                    <ul class="level3 js-level3">
+                      <li *ngFor="let subcategory of category.subcategories">
+                        <a class="navigation-node-wrapper" [href]="subcategory.link">
+                          <span class="sub-span">{{ subcategory.name }}</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="nav-wrapper__image" *ngIf="cosmeticSidebarData.kozmetik.sideImage">
+        <a [href]="cosmeticSidebarData.kozmetik.sideImage.link">
+          <img class="drop-img" [src]="cosmeticSidebarData.kozmetik.sideImage.src"
+            [alt]="cosmeticSidebarData.kozmetik.sideImage.alt">
+        </a>
+      </div>
+    </div>
+  </div>
+  <!-- Sidebar Chocolate -->
+  <div class="dropdown-menu" *ngIf="activeDropdown === 'latelier' && latelierSidebarData">
+    <div class="nav-wrapper js-nav-wrapper">
+      <div class="nav-wrapper-node js-wrapper-node">
+        <div class="navigation__wrapper__inner js-inner-level2">
+          <div class="nav-wrapper-node__top">
+            <!-- Ana kategoriler -->
+            <div class="nav-wrapper-node__top__left">
+              <ul class="level2 js-level2" *ngFor="let category of latelierSidebarData.latelier.leftCategories">
+                <li *ngFor="let subCategory of category.subcategories">
+                  <a class="navigation-node-wrapper" [href]="subCategory.link">
+                    <span class="title-span">{{ subCategory.name }}</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="nav-wrapper-node__top__right">
+              <ul *ngFor="let rightCategory of latelierSidebarData.latelier.rightCategories" class="level2 js-level2">
+                <li>
+                  <a class="navigation-node-wrapper" [href]="rightCategory.link">
+                    <span class="right-span" [ngStyle]="rightCategory.style">
+                      {{ rightCategory.title }}
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-wrapper__image" *ngIf="latelierSidebarData.latelier.sideImage">
+        <a [href]="latelierSidebarData.latelier.sideImage.link">
+          <img class="drop-img" [src]="latelierSidebarData.latelier.sideImage.src"
+            [alt]="latelierSidebarData.latelier.sideImage.alt">
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sidebar Vakkorama -->
+  <div class="dropdown-menu-onlyImg" *ngIf="activeDropdown === 'vakkorama'">
+    <div class="nav-wrapper__image">
+      <a href="#">
+        <img class="drop-img" src="assets/vakko-responsive-sidebar-svg/sidebarimg10.jpeg" alt="vakkorama">
+      </a>
+    </div>
+  </div>
+
+  <!-- Sidebar Hotels -->
+  <div class="dropdown-menu-onlyImg" *ngIf="activeDropdown === 'hotel'">
+    <div class="nav-wrapper__image">
+      <a href="#">
+        <img class="drop-img" src="assets/vakko-responsive-sidebar-svg/sidebarimg11.jpeg" alt="hotel">
+      </a>
+    </div>
+  </div>
+
+  <!-- Sidebar OUTLET -->
+  <div class="dropdown-menu" *ngIf="activeDropdown === 'outlet' && outletSidebarData">
+    <div class="nav-wrapper js-nav-wrapper">
+      <div class="nav-wrapper-node js-wrapper-node">
+        <div class="navigation__wrapper__inner js-inner-level2">
+          <div class="nav-wrapper-node__top">
+            <!-- Ana kategoriler -->
+            <div class="nav-wrapper-node__top__left">
+              <ul class="level2 js-level2" *ngFor="let category of outletSidebarData.outlet.leftCategories">
+                <li>
+                  <div class="navigation-node-wrapper no-link">
+                    <span class="title-span">{{ category.title }}</span>
+                  </div>
+
+                  <div class="wrapper js-wrapper-level2">
+                    <ul class="level3 js-level3">
+                      <li *ngFor="let subCategory of category.subcategories">
+                        <a class="navigation-node-wrapper" [href]="subCategory.link">
+                          <span class="sub-span">{{ subCategory.name }}</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Sağ Menü -->
+            <div class="nav-wrapper-node__top__right">
+              <ul class="level2 js-level2" *ngFor="let lookbook of outletSidebarData.outlet.rightCategories">
+                <li>
+                  <div class="navigation-node-wrapper no-link">
+                    <span class="title-span">{{ lookbook.title }}</span>
+                  </div>
+
+                  <div class="wrapper js-wrapper-level2">
+                    <ul class="level3 js-level3">
+                      <li *ngFor="let subLookbook of lookbook.subcategories">
+                        <a class="navigation-node-wrapper" [href]="subLookbook.link">
+                          <span class="sub-span">{{ subLookbook.name }}</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- Özel Teklifler -->
+          <div class="nav-wrapper-node__bottom">
+            <ul class="level2 js-level2" *ngFor="let offer of outletSidebarData.outlet.bottomCategories">
+              <li>
+                <a class="navigation-node-wrapper" [href]="offer.link">
+                  <span class="right-span">
+                    {{ offer.title }}
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- Yan Görsel -->
+      <div class="nav-wrapper__image" *ngIf="outletSidebarData.outlet.sideImage">
+        <a [href]="outletSidebarData.outlet.sideImage.link">
+          <img class="drop-img" [src]="outletSidebarData.outlet.sideImage.src"
+            [alt]="outletSidebarData.outlet.sideImage.alt">
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sidebar Hakkında -->
+  <div class="dropdown-menu" *ngIf="activeDropdown === 'hakkında' && aboutSidebarData">
+    <div class="nav-wrapper js-nav-wrapper">
+      <div class="nav-wrapper-node js-wrapper-node">
+        <div class="navigation__wrapper__inner js-inner-level2">
+          <div class="nav-wrapper-node__top">
+            <!-- Ana kategoriler -->
+            <div class="nav-wrapper-node__top__left">
+              <ul class="level2 js-level2" *ngFor="let category of aboutSidebarData.about.leftCategories">
+                <li>
+                  <div *ngIf="category.subcategories" class="navigation-node-wrapper no-link">
+                    <span class="title-span">{{ category.title }}</span>
+                  </div>
+                  <div class="wrapper js-wrapper-level2">
+                    <ul class="level3 js-level3">
+                      <li *ngFor="let subCategory of category.subcategories">
+                        <a class="navigation-node-wrapper" [href]="subCategory.link">
+                          <span class="sub-span">{{ subCategory.name }}</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+              </ul>
+            </div>
+            <div class="nav-wrapper-node__top__right">
+
+            </div>
+          </div>
+          <div class="nav-wrapper-node__bottom">
+          </div>
+        </div>
+      </div>
+      <div class="nav-wrapper__image" *ngIf="aboutSidebarData.about.sideImage">
+        <a [href]="aboutSidebarData.about.sideImage.link">
+          <img class="drop-img" [src]="aboutSidebarData.about.sideImage.src"
+            [alt]="aboutSidebarData.about.sideImage.alt">
+        </a>
+      </div>
+    </div>
+  </div>
+  <!-- Sidebar Menu -->
+  <div class="sidenav-overlay"></div>
+  <div class="sidenav-wrapper">
+    <div class="wrapper-top">
+      <button class="buttonClose" (click)="closeSidenav()">
+        <img src="assets/vakko-responsive-sidebar-svg/xicon.svg">
+      </button>
+    </div>
+
+    <nav class="side-nav">
+      <ul class="sidebar-menu">
+        <li *ngFor="let item of menuData.menuItems" (mouseenter)="showDropdown(item.key)"
+          [class.sidenav-about]="item.isAbout">
+          <a [href]="item.isAbout ? '#about' : '#' + item.key">
+            <span [ngStyle]="{'color': activeDropdown === item.key ? 'black' : ''}">
+              {{ item.label }}
+            </span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="wrapper-bottom">
+      <div class="language">
+        <img src="assets/vakko-footer-svg/language.svg">
+        <div class="language-list">
+          <div *ngFor="let lang of menuData.languages; let last = last" class="language-list-item">
+            {{ lang.code }}{{ !last ? ' / ' : '' }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

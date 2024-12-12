@@ -1,0 +1,31 @@
+<header class="header-id">
+    <app-sidenav class="sidenav-active" [isOpen]="isOpen" (dataEvent)="handleSidenavClose($event)"></app-sidenav>
+    <div class="header-div">
+      <div class="header-menu">
+        <button class="button" (click)="toggle()">
+         <img class="icon" src="assets/vakko-header-svg/menuicon.svg">
+        </button>
+      </div>
+      <div class="header-logo">
+        <a class="logo" >
+          <img class="header-logo-vakko " src="assets/vakko-header-svg/logo.svg" alt="Logo" />
+        </a>
+      </div>
+      <div class="header-links">
+        <button class="button">
+          <img class="icon" src="assets/vakko-header-svg/searchicon.svg">
+        </button>
+        
+        <a class="logo">
+          <img class="icon" src="assets/vakko-header-svg/usericon.svg">
+        </a>
+        
+        <a class="logo">
+          <img class="icon" src="assets/vakko-header-svg/shopicon.svg">
+        </a>
+      </div>
+    </div>
+  </header>
+  
+  
+  
